@@ -1,0 +1,88 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: whitesmoke;
+    color: darkslategray;
+    max-width: 420px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: white;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+    margin-top: 0;
+    font-size: 24px;
+}
+
+label {
+    font-weight: bold;
+    color: dimgray;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: deepskyblue;
+    outline: none;
+}
+
+button {
+    width: 48%;
+    padding: 12px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 2%;
+}
+
+button:last-of-type {
+    background-color: crimson;
+    margin-right: 0;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: lightgray;
+    margin: 20px 0;
+}
+
+#output {
+    padding: 15px;
+    background-color: mintcream;
+    border-left: 5px solid forestgreen;
+    border-radius: 6px;
+}
+
+#output h2 {
+    color: forestgreen;
+    margin-top: 0;
+    font-size: 18px;
+}
+
+#output p {
+    color: darkslategray;
+    margin-bottom: 0;
+    font-size: 14px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Practical 1</title>
+    <link rel="stylesheet" href="style.css">
+
+	<script>
+		function showWelcome() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let email = document.getElementById("email").value;
+
+            document.getElementById("output").innerHTML = 
+                "<h2>Welcome, " + name + "!</h2>" +
+                "<p>Your Age is: " + age + "</p>" +
+                "<p>Your Email is: " + email + "</p>";
+
+            console.log("User Name: " + name);
+            console.log("User Age: " + age);
+            console.log("User Email: " + email);
+            console.warn("This is a warning message.");
+            console.error("This is an error message (Demo Purpose).");
+        }
+
+        function resetOutput() {
+            document.getElementById("output").innerHTML = "";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>User Information</h1>
+
+    <label>Enter Name:</label><br>
+    <input type="text" id="name" placeholder="Enter Name"><br><br>
+
+    <label>Enter Age:</label><br>
+    <input type="number" id="age" placeholder="Enter Age"><br><br>
+
+    <label>Enter Email:</label><br>
+    <input type="email" id="email" placeholder="Enter Email"><br><br>
+
+    <button onclick="showWelcome(); greet();">
+        Submit
+    </button>
+
+    <button onclick="resetOutput();">
+        Clear Output
+    </button>
+
+    <hr>
+
+    <div id="output"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
