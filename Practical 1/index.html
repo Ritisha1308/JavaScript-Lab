@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="style.css">
 
 	<script>
+		window.onload = function () {
+			alert("Welcome to SIT Nagpur");
+		};
+
 		function showWelcome() {
             let name = document.getElementById("name").value;
             let age = document.getElementById("age").value;
@@ -40,7 +44,7 @@
     <label>Enter Email:</label><br>
     <input type="email" id="email" placeholder="Enter Email"><br><br>
 
-    <button onclick="showWelcome(); greet();">
+    <button onclick="showWelcome();">
         Submit
     </button>
 
@@ -52,11 +56,10 @@
 
     <div id="output"></div>
 
-	<footer style="margin-top:40px; text-align:center; font-size:16px">
+     <footer style="margin-top:40px; text-align:center; font-size:16px">
         <hr>
         <p><strong>Created by:</strong> Ritisha Naigaonkar-045, A2 Batch</p>
     </footer>
-
 
 <script src="script.js"></script>
 
