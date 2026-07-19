@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🛒 Online Shopping Store</h1>
+    <p>Buy Your Favorite Electronics</p>
+</header>
+
+<section class="products">
+
+    <div class="card">
+        <h2><span>💻</span><br>Laptop</h2>
+        <p class="price">₹25000</p>
+
+        <label>Quantity</label><br>
+        <input type="number" id="laptop" value="0" min="0"><br>
+
+        <button onclick="addItem('Laptop',25000,document.getElementById('laptop').value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="card">
+        <h2><span>📱</span><br>Mobile</h2>
+        <p class="price">₹15000</p>
+
+        <label>Quantity</label><br>
+        <input type="number" id="mobile" value="0" min="0"><br>
+
+        <button onclick="addItem('Mobile',15000,document.getElementById('mobile').value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="card">
+        <h2><span>🎧</span><br>Headphones</h2>
+        <p class="price">₹2000</p>
+
+        <label>Quantity</label><br>
+        <input type="number" id="headphone" value="0" min="0"><br>
+
+        <button onclick="addItem('Headphones',2000,document.getElementById('headphone').value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="card">
+        <h2><span>⌨️</span><br>Keyboard</h2>
+        <p class="price">₹1200</p>
+
+        <label>Quantity</label><br>
+        <input type="number" id="keyboard" value="0" min="0"><br>
+
+        <button onclick="addItem('Keyboard',1200,document.getElementById('keyboard').value)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="card">
+        <h2><span>🖱️</span><br>Mouse</h2>
+        <p class="price">₹800</p>
+
+        <label>Quantity</label><br>
+        <input type="number" id="mouse" value="0" min="0"><br>
+
+        <button onclick="addItem('Mouse',800,document.getElementById('mouse').value)">
+            Add to Cart
+        </button>
+    </div>
+
+</section>
+
+<section class="bill">
+
+    <h2>🧾 Bill Receipt</h2>
+
+    <div id="receipt">
+        Your cart is empty.
+    </div>
+
+    <button class="billBtn" onclick="generateBill()">
+        Generate Bill
+    </button>
+
+</section>
+
+<footer>
+    Created by: Ritisha Naigaonkar-045, A2 Batch
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
