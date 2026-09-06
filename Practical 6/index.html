@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>String Lab — JavaScript String Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="hero">
+    <h1 class="title">String<span class="cursor">_</span>Lab</h1>
+    <p class="subtitle">Type anything below. Watch every string method react to it, live.</p>
+  </header>
+
+  <!-- SIGNATURE: live playground -->
+  <section class="playground">
+    <div class="playground-head">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="playground-label">playground.js</span>
+    </div>
+
+    <div class="input-row">
+      <span class="prompt">const str =</span>
+      <input id="strInput" type="text" value="Hello JavaScript World" spellcheck="false">
+    </div>
+
+    <div id="resultsGrid" class="results-grid"></div>
+  </section>
+
+  <!-- Case study section -->
+  <section class="case-study">
+    <p class="eyebrow"><b>Case Study</b></p>
+    <div class="case-grid">
+      <article class="case-card">
+        <span class="case-index">01</span>
+        <h3>Reverse a string</h3>
+        <p class="case-desc">Flip the input above — letter by letter, back to front.</p>
+        <div class="case-output">
+          <span class="case-output-label">output</span>
+          <span id="reverseOutput" class="case-output-value">—</span>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <span class="case-index">02</span>
+        <h3>Count the vowels</h3>
+        <p class="case-desc">Every a, e, i, o, u in the input, uppercase or lower.</p>
+        <div class="case-output">
+          <span class="case-output-label">output</span>
+          <span id="vowelOutput" class="case-output-value">—</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="paragraph-block">
+      <label for="paraInput" class="paragraph-label">Try the vowel counter on a full paragraph</label>
+      <textarea id="paraInput" rows="4" spellcheck="false">The quick brown fox jumps over the lazy dog. JavaScript makes strings easy to explore, one character at a time.</textarea>
+      <div class="paragraph-result">
+        Vowels found: <span id="paraVowelCount">0</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Created by: Ritisha Naigaonkar, 24070521045, A2</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
