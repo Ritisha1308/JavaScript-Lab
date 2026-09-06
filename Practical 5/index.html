@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Manager</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="receipt">
+        <header>
+            <div class="eyebrow">Case Study · Arrays &amp; Array Methods</div>
+            <h2>Student Marks Manager</h2>
+            <div class="tagline">Add student marks below, records update after every entry</div>
+        </header>
+
+        <div class="entry-form">
+            <div class="field full">
+                <label for="name">Student Name</label>
+                <input type="text" id="name" placeholder="e.g. Ritisha Naigaonkar">
+            </div>
+            <div class="field full">
+                <label for="marks">Marks (0–100)</label>
+                <input type="number" id="marks" placeholder="e.g. 78" min="0" max="100">
+            </div>
+        </div>
+
+        <div class="btn-row">
+            <button onclick="addStudent()">+ Add Student</button>
+            <button class="ghost" onclick="removeLastStudent()">− Remove Last</button>
+        </div>
+
+        <table id="marksTable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Marks</th>
+                <th>Result</th>
+            </tr>
+        </table>
+
+        <div class="result" id="result"></div>
+
+        <h3>Student Summary</h3>
+        <ul id="summary"></ul>
+
+        <h3>Distinction Holders (Marks &gt; 75)</h3>
+        <ul id="distinction"></ul>
+
+        <h3>Case Study — Highest &amp; Lowest Marks</h3>
+        <div class="result" id="marksExtremes"></div>
+
+        <div class="barcode"></div>
+        <div class="barcode-label">END OF RESULT SHEET</div>
+    </div>
+
+    <footer class="site-footer">
+        Designed by: Ritisha Naigaonkar, 24070521045, Batch A2
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

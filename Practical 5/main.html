@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart Calculator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #faf6ed;
+            --paper-dark: #f0e9d8;
+            --ink: #241f1a;
+            --ink-soft: #6b6255;
+            --line: #cdc3ac;
+            --stamp-red: #b23a2e;
+            --stamp-green: #3b6e4f;
+            --focus: #1f6f5c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', 'Courier New', monospace;
+            background: #e8e2d3;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(0,0,0,0.045) 1px, transparent 0);
+            background-size: 14px 14px;
+            color: var(--ink);
+            min-height: 100vh;
+            margin: 0;
+            padding: 48px 16px 72px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .receipt {
+            width: 100%;
+            max-width: 640px;
+            background: var(--paper);
+            padding: 40px 36px 28px;
+            box-shadow:
+                0 1px 0 rgba(0,0,0,0.05),
+                0 24px 48px -20px rgba(36, 31, 26, 0.35);
+            position: relative;
+        }
+
+        /* torn perforated edge at the bottom of the receipt */
+        .receipt::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -13px;
+            height: 26px;
+            background:
+                radial-gradient(circle at 13px 0, transparent 13px, var(--paper) 13.5px) 0 -13px / 26px 26px repeat-x;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px dashed var(--line);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.35em;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-family: 'Archivo Black', 'Space Mono', sans-serif;
+            font-size: 28px;
+            margin: 0;
+            letter-spacing: 0.01em;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: var(--ink-soft);
+            margin-top: 8px;
+        }
+
+        .entry-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        input {
+            font-family: inherit;
+            font-size: 14px;
+            padding: 10px 10px;
+            width: 100%;
+            border: 1.5px solid var(--line);
+            background: #fffdf8;
+            color: var(--ink);
+            border-radius: 2px;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        input::placeholder {
+            color: #b3a993;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--focus);
+            box-shadow: 0 0 0 3px rgba(31, 111, 92, 0.15);
+        }
+
+        button {
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 12px 15px;
+            margin-top: 8px;
+            width: 100%;
+            cursor: pointer;
+            background: var(--ink);
+            color: var(--paper);
+            border: none;
+            border-radius: 2px;
+            transition: transform 0.1s ease, background 0.15s ease;
+        }
+
+        button:hover {
+            background: var(--focus);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+            font-size: 13px;
+        }
+
+        caption {
+            text-align: left;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 8px;
+        }
+
+        th {
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: transparent;
+            color: var(--ink);
+            border-bottom: 2px solid var(--ink);
+            border-top: none;
+        }
+
+        th, td {
+            padding: 9px 6px;
+            text-align: left;
+        }
+
+        td:nth-child(1),
+        td:nth-child(4),
+        th:nth-child(1),
+        th:nth-child(4) {
+            text-align: center;
+        }
+
+        td:nth-child(3),
+        td:nth-child(5),
+        th:nth-child(3),
+        th:nth-child(5) {
+            text-align: right;
+        }
+
+        table, td {
+            border: none;
+            border-bottom: 1px dashed var(--line);
+        }
+
+        tr:last-child td {
+            border-bottom: 1px dashed var(--line);
+        }
+
+        tbody tr:hover td,
+        tr:hover td {
+            background: var(--paper-dark);
+        }
+
+        .result {
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 2px dashed var(--line);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .result b {
+            font-weight: 700;
+        }
+
+        .result-final {
+            font-size: 20px;
+            margin-top: 4px;
+        }
+
+        h3 {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin: 26px 0 8px;
+            font-weight: 400;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        ul li {
+            padding: 6px 0;
+            border-bottom: 1px dotted var(--line);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        #expensive li::before {
+            content: "★ ";
+            color: var(--stamp-red);
+        }
+
+        .barcode {
+            margin-top: 30px;
+            height: 34px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--ink) 0px, var(--ink) 2px,
+                transparent 2px, transparent 5px,
+                var(--ink) 5px, var(--ink) 6px,
+                transparent 6px, transparent 10px
+            );
+            opacity: 0.85;
+        }
+
+        .barcode-label {
+            text-align: center;
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            color: var(--ink-soft);
+            margin-top: 6px;
+        }
+
+        .site-footer {
+            width: 100%;
+            max-width: 640px;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            color: var(--ink-soft);
+            margin-top: 22px;
+        }
+
+        @media (max-width: 480px) {
+            .receipt {
+                padding: 28px 20px 24px;
+            }
+            .entry-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="receipt">
+        <header>
+            <h2>Shopping Cart Calculator</h2>
+            <div class="tagline">Add items below, totals update after every entry</div>
+        </header>
+
+        <div class="entry-form">
+            <div class="field full">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" placeholder="e.g. Wireless Mouse">
+            </div>
+            <div class="field">
+                <label for="price">Price (₹)</label>
+                <input type="number" id="price" placeholder="0.00">
+            </div>
+            <div class="field">
+                <label for="qty">Quantity</label>
+                <input type="number" id="qty" placeholder="1">
+            </div>
+        </div>
+
+        <button onclick="addProduct()">+ Add Product</button>
+
+        <table id="cartTable">
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+        </table>
+
+        <div class="result" id="result"></div>
+
+        <h3>Item Summary</h3>
+        <ul id="summary"></ul>
+
+        <h3>Premium Picks (Price &gt; ₹1000)</h3>
+        <ul id="expensive"></ul>
+
+        <div class="barcode"></div>
+        <div class="barcode-label">THANK YOU FOR SHOPPING</div>
+    </div>
+
+    <footer class="site-footer">
+        Designed by: Ritisha Naigaonkar, 24070521045, Batch A2
+    </footer>
+
+    <script>
+        // Basic variables instead of an array - just plain counters and running totals
+        let itemCount = 0;
+        let cartTotal = 0;
+
+        function addProduct() {
+
+            let name = document.getElementById("name").value;
+            let price = parseFloat(document.getElementById("price").value);
+            let qty = parseInt(document.getElementById("qty").value);
+
+            // Input validation
+            if (name === "" || isNaN(price) || isNaN(qty)) {
+                alert("Please enter all fields");
+                return;
+            }
+
+            // New product's own total
+            let itemTotal = price * qty;
+
+            // Update running counters
+            itemCount = itemCount + 1;
+            cartTotal = cartTotal + itemTotal;
+
+            // Add a row directly to the table for this one product
+            let table = document.getElementById("cartTable");
+            table.innerHTML += `
+                <tr>
+                    <td>${itemCount}</td>
+                    <td>${name}</td>
+                    <td>₹${price}</td>
+                    <td>${qty}</td>
+                    <td>₹${itemTotal}</td>
+                </tr>
+            `;
+
+            // Add this product to the item summary list
+            let summary = document.getElementById("summary");
+            summary.innerHTML += `
+                <li><span>${name}</span><span>₹${itemTotal}</span></li>
+            `;
+
+            // Check if this product is a "premium pick"
+            if (price > 1000) {
+                let expensive = document.getElementById("expensive");
+                expensive.innerHTML += `
+                    <li><span>${name}</span></li>
+                `;
+            }
+
+            // Discount logic based on the running cart total
+            let discount = 0;
+
+            if (cartTotal >= 50000) {
+                discount = cartTotal * 0.20;
+            }
+            else if (cartTotal >= 20000) {
+                discount = cartTotal * 0.10;
+            }
+            else if (cartTotal >= 5000) {
+                discount = cartTotal * 0.05;
+            }
+
+            let finalAmount = cartTotal - discount;
+
+            // Display result
+            document.getElementById("result").innerHTML = `
+                <div>Total Amount: <b>₹${cartTotal.toFixed(2)}</b></div>
+                <div>Discount: <b>₹${discount.toFixed(2)}</b></div>
+                <div class="result-final">Final Amount: <b>₹${finalAmount.toFixed(2)}</b></div>
+            `;
+
+            // Clear input fields
+            document.getElementById("name").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("qty").value = "";
+            document.getElementById("name").focus();
+        }
+    </script>
+
+</body>
+</html>
