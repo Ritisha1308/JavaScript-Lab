@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>GYM ADMISSION</h1>
+    <p class="sub">Register for your fitness journey</p>
+
+    <form id="gymForm">
+
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <small id="nameError"></small>
+
+        <label>Sex</label>
+        <div class="radio">
+            <label><input type="radio" name="sex" value="Male"> Male</label>
+            <label><input type="radio" name="sex" value="Female"> Female</label>
+        </div>
+        <small id="sexError"></small>
+
+        <label>Eye Color</label>
+        <select id="eye">
+            <option value="">Select eye color</option>
+            <option>Black</option>
+            <option>Brown</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Grey</option>
+        </select>
+        <small id="eyeError"></small>
+
+        <label>Check all that apply</label>
+        <div class="checks">
+            <label><input type="checkbox"> Over 6 feet tall</label>
+            <label><input type="checkbox"> Over 200 pounds</label>
+        </div>
+
+        <label>Describe your athletic ability</label>
+        <textarea id="ability" maxlength="200"
+                  placeholder="Write about your fitness experience..."></textarea>
+        <small id="abilityError"></small>
+
+        <label class="confirm">
+            <input type="checkbox" id="confirm">
+            I confirm that the information is correct.
+        </label>
+
+        <button type="submit">Enter My Information</button>
+        <button type="reset" class="reset">Reset</button>
+
+    </form>
+
+    <p id="success"></p>
+</div>
+
+<footer>
+    created by Ritisha Naigaonkar, 24070521045, A2
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

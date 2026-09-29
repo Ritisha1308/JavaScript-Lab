@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #101814, #26352c);
+    color: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 550px;
+    margin: 45px auto;
+    padding: 30px;
+    background: #151d19;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px #0008;
+}
+
+h1 {
+    color: #b9ff3f;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.sub {
+    text-align: center;
+    color: #999;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin: 16px 0 7px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    background: #202923;
+    color: white;
+    border: 1px solid #465149;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #b9ff3f;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.radio,
+.checks {
+    display: flex;
+    gap: 25px;
+}
+
+.radio label,
+.checks label,
+.confirm {
+    font-weight: normal;
+    margin: 5px 0;
+}
+
+small {
+    color: #ff6875;
+    display: block;
+    margin-top: 5px;
+}
+
+button {
+    width: 65%;
+    padding: 13px;
+    margin-top: 22px;
+    border: 0;
+    border-radius: 8px;
+    background: #b9ff3f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d0ff78;
+}
+
+.reset {
+    width: 30%;
+    background: transparent;
+    color: white;
+    border: 1px solid #555;
+}
+
+#success {
+    color: #7dffad;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 10px;
+    margin: 25px;
+}
